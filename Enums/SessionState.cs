@@ -5,5 +5,5 @@ public enum SessionState
     Idle,
     Running,
     Paused,
-    Complete
+    Completed
 }

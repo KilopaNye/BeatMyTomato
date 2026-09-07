@@ -5,5 +5,5 @@ public enum SessionTrigger
     Start,
     Pause,
     Resume,
-    Completed
+    Complete
 }
