@@ -13,6 +13,17 @@ public class TimerStateMachine : ITimerStateMachine
     public TimerStateMachine(SessionState initialState)
     {
         _machine = new StateMachine<SessionState, SessionTrigger>(initialState);
+
+        _machine.Configure(SessionState.Idle)
+        .Permit(SessionTrigger.Start, SessionState.Running);
+
+        _machine.Configure(SessionState.Running)
+        .Permit(SessionTrigger.Pause, SessionState.Paused)
+        .Permit(SessionTrigger.Complete, SessionState.Completed);
+
+        _machine.Configure(SessionState.Paused)
+        .Permit(SessionTrigger.Resume, SessionState.Running)
+        .Permit(SessionTrigger.Complete, SessionState.Completed);
     }
 
 
