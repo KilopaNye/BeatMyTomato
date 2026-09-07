@@ -16,15 +16,20 @@ public class TimerStateMachine : ITimerStateMachine
     }
 
 
-    public SessionState CurrentState => throw new NotImplementedException();
+    public SessionState CurrentState => _machine.State;
 
     public bool CanFire(SessionTrigger trigger)
     {
-        throw new NotImplementedException();
+        return _machine.CanFire(trigger);
     }
 
     public void Fire(SessionTrigger trigger)
     {
-        throw new NotImplementedException();
+        if (!CanFire(trigger))
+        {
+            throw new InvalidStateTransitionException(CurrentState,trigger);
+        }
+
+        _machine.Fire(trigger);
     }
 }
