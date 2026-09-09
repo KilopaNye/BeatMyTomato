@@ -8,3 +8,4 @@ Console.WriteLine(sm.CurrentState);       // Running
 sm.Fire(SessionTrigger.Complete);
 Console.WriteLine(sm.CurrentState);       // Completed
 sm.Fire(SessionTrigger.Pause);            // Exception
+
