@@ -26,12 +26,12 @@ public class InMemoryPomodoroRepository : IPomodoroRepository
 
     public void Update(PomodoroSession session)
     {
-        throw new NotImplementedException();
+        _sessions[session.Id] = session;
     }
 
     public bool Delete(Guid id)
     {
-        throw new NotImplementedException();
+        return _sessions.TryRemove(id, out var removeValue);
     }
 
 }
