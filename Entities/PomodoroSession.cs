@@ -18,6 +18,9 @@ public class PomodoroSession
         }
 
         return now - StartedAt.Value - PausedDuration;
-// 你來完成這裡：now 減去 StartedAt.Value，再減去 PausedDuration
+    }
+    public TimeSpan GetRemaining(DateTime now)
+    {
+        return PlannedDuration - GetElapsed(now);
     }
 }
